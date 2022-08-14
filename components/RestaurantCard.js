@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import { LocationMarkerIcon } from "react-native-heroicons/outline";
@@ -15,8 +16,25 @@ function RestaurantCard({
   long,
   lat,
 }) {
+  const navigation = useNavigation();
   return (
-    <TouchableOpacity className="bg-white mr-3 shadow">
+    <TouchableOpacity
+      className="bg-white mr-3 shadow"
+      onPress={() => {
+        navigation.navigate("Restaurant", {
+          id,
+          imgUrl,
+          title,
+          rating,
+          genre,
+          address,
+          short_description,
+          dishes,
+          long,
+          lat,
+        });
+      }}
+    >
       <Image source={{ uri: imgUrl }} className="h-36 w-64 rounded-sm" />
       <View className="px-3 pb-4">
         <Text className="font-bold text-lg pt-2">{title}</Text>

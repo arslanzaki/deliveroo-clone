@@ -59,7 +59,7 @@ function FeaturedRow({ id, title, description }) {
             dishes={restaurant.dishes}
             long={restaurant.long}
             lat={restaurant.lat}
-            r
+            
           />
         ))}
 
