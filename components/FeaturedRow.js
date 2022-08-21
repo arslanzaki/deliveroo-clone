@@ -44,8 +44,6 @@ function FeaturedRow({ id, title, description }) {
         showsHorizontalScrollIndicator={false}
         className="pt-4"
       >
-        {/* RestaurantCards... */}
-
         {restaurants?.map((restaurant) => (
           <RestaurantCard
             key={restaurant._id}
@@ -59,11 +57,8 @@ function FeaturedRow({ id, title, description }) {
             dishes={restaurant.dishes}
             long={restaurant.long}
             lat={restaurant.lat}
-            
           />
         ))}
-
- 
       </ScrollView>
     </View>
   );

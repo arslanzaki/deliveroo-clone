@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
-import CurrencyFormat from "react-currency-format";
+// import CurrencyFormat from "react-currency-format";
 import { urlFor } from "../sanity";
 import { MinusCircleIcon, PlusCircleIcon } from "react-native-heroicons/solid";
 
-const DishRow = ({ id, name, description, price, image }) => {
+const DishRow = ({ name, description, price, image }) => {
   const [isPressed, setIsPressed] = useState(false);
   return (
     <>
@@ -13,31 +13,25 @@ const DishRow = ({ id, name, description, price, image }) => {
           setIsPressed(!isPressed);
         }}
         className={`bg-white border p-4 border-gray-200 ${
-          isPressed && "border-b-0"
+          isPressed ? "border-b-0" : ""
         }`}
       >
         <View className="flex-row">
           <View className="flex-1 pr-2">
             <Text className="text-lg mb-1">{name}</Text>
             <Text className="text-gray-400">{description}</Text>
-            <Text className="text-gray-400 mt-2">
-              <CurrencyFormat
-                value={price}
-                displayType={"text"}
-                prefix={"Rs."}
-              />
-            </Text>
+            <Text className="text-gray-400 mt-2">Rs.{price}</Text>
           </View>
           <View>
             <Image
               source={{ uri: urlFor(image).url() }}
-              className="h-20 w-20 bg-gray-300 p-4 border-2 border-[#f3f3f4]"
+              className="h-20 w-20 bg-gray-300 p-4"
             />
           </View>
         </View>
       </TouchableOpacity>
 
-      {isPressed && (
+      {isPressed ? (
         <View className="bg-white px-4">
           <View className="flex-row items-center space-x-2 pb-3">
             <TouchableOpacity>
@@ -49,7 +43,7 @@ const DishRow = ({ id, name, description, price, image }) => {
             </TouchableOpacity>
           </View>
         </View>
-      )}
+      ) : null}
     </>
   );
 };

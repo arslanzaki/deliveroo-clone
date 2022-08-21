@@ -1,14 +1,14 @@
-import { useNavigation, useRoute } from "@react-navigation/native";
 import React, { useLayoutEffect } from "react";
-import { View, Text, ScrollView, Image, TouchableOpacity } from "react-native";
+import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import {
   ChevronRightIcon,
   LocationMarkerIcon,
   QuestionMarkCircleIcon,
 } from "react-native-heroicons/outline";
 import { ArrowLeftIcon, StarIcon } from "react-native-heroicons/solid";
-import DishRow from "../components/DishRow";
 import { urlFor } from "../sanity";
+import DishRow from "../components/DishRow";
 
 const RestaurantScreen = () => {
   const navigation = useNavigation();
@@ -32,6 +32,7 @@ const RestaurantScreen = () => {
       headerShown: false,
     });
   }, []);
+
   return (
     <ScrollView>
       <View className="relative">
@@ -74,10 +75,8 @@ const RestaurantScreen = () => {
           <ChevronRightIcon color="#00CCBB" />
         </TouchableOpacity>
       </View>
-
       <View>
         <Text className="px-4 pt-6 mb-3 font-bold text-xl">Menu</Text>
-        {/* DishRows */}
 
         {dishes.map((dish) => (
           <DishRow

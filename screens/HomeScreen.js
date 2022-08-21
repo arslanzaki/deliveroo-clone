@@ -48,11 +48,8 @@ const HomeScreen = () => {
       });
   }, []);
 
-  //console.log(featuredCategories);
-
   return (
     <SafeAreaView className=" bg-white pt-8">
-      {/* Header */}
       <View className="flex-row pb-6 items-center space-x-2  px-4">
         <View>
           <Image
@@ -77,7 +74,7 @@ const HomeScreen = () => {
           <UserIcon size={35} color="#00CCBB" />
         </View>
       </View>
-      {/* Search */}
+
       <View className="flex-row items-center space-x-2 pb-2 px-4">
         <View className="flex-row items-center space-x-2 flex-1 bg-gray-200 p-3">
           <SearchIcon color="gray" size={20} />
@@ -88,17 +85,14 @@ const HomeScreen = () => {
         </View>
         <AdjustmentsIcon color="#00CCBB" />
       </View>
-      {/* Content */}
+
       <ScrollView
         className="bg-gray-100"
         contentContainerStyle={{ paddingBottom: 100 }}
       >
-        {/* Categories */}
         <Categories />
 
-        {/* Featured Rows */}
-
-        {featuredCategories?.map((category)=> (
+        {featuredCategories?.map((category) => (
           <FeaturedRow
             key={category._id}
             id={category._id}
@@ -106,14 +100,9 @@ const HomeScreen = () => {
             description={category.short_description}
           />
         ))}
-
-        
-      
-       
       </ScrollView>
     </SafeAreaView>
   );
 };
 
 export default HomeScreen;
-
