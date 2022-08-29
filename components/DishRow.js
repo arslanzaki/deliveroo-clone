@@ -24,7 +24,7 @@ const DishRow = ({ id, name, description, price, image }) => {
     if (!basketItems.length > 0) return;
     dispatch(removeFromBasket({ id }));
   };
-  console.log(basketItems);
+  //console.log(basketItems);
   return (
     <>
       <TouchableOpacity
