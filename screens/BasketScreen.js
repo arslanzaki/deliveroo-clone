@@ -13,12 +13,13 @@ import { useMemo } from "react";
 import { selectRestaurant } from "../features/restaurantSlice";
 import { XCircleIcon } from "react-native-heroicons/solid";
 import { urlFor } from "../sanity";
-import { removeFromBasket } from "../features/basketSlice";
+import { removeFromBasket, selectBasketTotal } from "../features/basketSlice";
 
 const BasketScreen = () => {
   const navigation = useNavigation();
   const restaurant = useSelector((state) => state.restaurant.restaurant);
   const basketItems = useSelector((state) => state.basket.items);
+  const basketTotal = useSelector(selectBasketTotal)
 
   const [groupedItemsInBasket, setGroupedItemsInBasket] = useState([]);
 
@@ -75,6 +76,25 @@ const BasketScreen = () => {
             </View>
           ))}
         </ScrollView>
+
+        <View className="p-5 bg-white mt-5 space-y-4">
+          <View className="flex-row justify-between">
+            <Text className="text-gray-400">Subtotal</Text>
+            <Text className="text-gray-400">Rs. {basketTotal}</Text>
+          </View>
+          <View className="flex-row justify-between">
+            <Text className="text-gray-400">Delivery Fee</Text>
+            <Text className="text-gray-400">Rs. 99</Text>
+          </View>
+          <View className="flex-row justify-between">
+            <Text className="font-bold">Order Total</Text>
+            <Text className="font-extrabold">Rs. {basketTotal + 99}</Text>
+          </View>
+
+          <TouchableOpacity className="rounded-lg  bg-[#00CCBB] p-4">
+            <Text className="font-extrabold text-lg text-center text-white">Place Order</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </SafeAreaView>
   );
