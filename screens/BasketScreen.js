@@ -19,7 +19,7 @@ const BasketScreen = () => {
   const navigation = useNavigation();
   const restaurant = useSelector((state) => state.restaurant.restaurant);
   const basketItems = useSelector((state) => state.basket.items);
-  const basketTotal = useSelector(selectBasketTotal)
+  const basketTotal = useSelector(selectBasketTotal);
 
   const [groupedItemsInBasket, setGroupedItemsInBasket] = useState([]);
 
@@ -62,7 +62,10 @@ const BasketScreen = () => {
 
         <ScrollView className="divide-y divide-gray-200">
           {Object.entries(groupedItemsInBasket).map(([key, items]) => (
-            <View key={key} className="flex-row items-center space-x-3 bg-white py-2 px-5">
+            <View
+              key={key}
+              className="flex-row items-center space-x-3 bg-white py-2 px-5"
+            >
               <Text className="text-[#00BBCC]">{items.length} x</Text>
               <Image
                 source={{ uri: urlFor(items[0].image).url() }}
@@ -70,7 +73,9 @@ const BasketScreen = () => {
               />
               <Text className="flex-1">{items[0].name}</Text>
               <Text className="text-gray-600">Rs. {items[0].price}</Text>
-              <TouchableOpacity onPress={()=> dispatch(removeFromBasket({id: key}))}>
+              <TouchableOpacity
+                onPress={() => dispatch(removeFromBasket({ id: key }))}
+              >
                 <Text className="text-[#00BBCC] text-xs">Remove</Text>
               </TouchableOpacity>
             </View>
@@ -91,8 +96,13 @@ const BasketScreen = () => {
             <Text className="font-extrabold">Rs. {basketTotal + 99}</Text>
           </View>
 
-          <TouchableOpacity className="rounded-lg  bg-[#00CCBB] p-4">
-            <Text className="font-extrabold text-lg text-center text-white">Place Order</Text>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("PreparingOrder")}
+            className="rounded-lg  bg-[#00CCBB] p-4"
+          >
+            <Text className="font-extrabold text-lg text-center text-white">
+              Place Order
+            </Text>
           </TouchableOpacity>
         </View>
       </View>
